@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ApyxOne-training/static/css/main.76031048.css",
+    "main.js": "/ApyxOne-training/static/js/main.f7743e82.js",
+    "static/js/787.35a77475.chunk.js": "/ApyxOne-training/static/js/787.35a77475.chunk.js",
+    "static/media/body.png": "/ApyxOne-training/static/media/body.8323ee5a633d514103aa.png",
+    "static/media/RenuvionTopLogo.svg": "/ApyxOne-training/static/media/RenuvionTopLogo.a1eda0a0875c5041e2a20bbd407c6582.svg",
+    "static/media/enums.png": "/ApyxOne-training/static/media/enums.4eb2a3a2c5bbc5d6770a.png",
+    "static/media/presetname.png": "/ApyxOne-training/static/media/presetname.f68deffe14db966d06aa.png",
+    "static/media/update.png": "/ApyxOne-training/static/media/update.cf8f8d164e4a6f33a14b.png",
+    "static/media/RenuvionBottomLogo.svg": "/ApyxOne-training/static/media/RenuvionBottomLogo.537163d838046ec110293cc9d03ac95f.svg",
+    "static/media/Bottle.svg": "/ApyxOne-training/static/media/Bottle.b0d5e18dbf968365ab43b0155d9d0542.svg",
+    "static/media/pen.svg": "/ApyxOne-training/static/media/pen.6789be36082dc1e810e1ae7971b938e7.svg",
+    "index.html": "/ApyxOne-training/index.html",
+    "static/media/pencil.svg": "/ApyxOne-training/static/media/pencil.06549cfb9e22d75470e802a85ca07207.svg",
+    "static/media/up.svg": "/ApyxOne-training/static/media/up.f0d1ea311829b9196542669aace4b3bf.svg",
+    "static/media/down.svg": "/ApyxOne-training/static/media/down.e3604c909f007f55f07e9403b4d6b834.svg",
+    "main.76031048.css.map": "/ApyxOne-training/static/css/main.76031048.css.map",
+    "main.f7743e82.js.map": "/ApyxOne-training/static/js/main.f7743e82.js.map",
+    "787.35a77475.chunk.js.map": "/ApyxOne-training/static/js/787.35a77475.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.76031048.css",
+    "static/js/main.f7743e82.js"
+  ]
+}
