@@ -15,7 +15,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-script": "^2.0.5",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "reactstrap": "^9.1.4",
     "recoil": "^0.7.5",
     "recoil-persist": "^4.2.0",
