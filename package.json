@@ -26,6 +26,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "set PORT=3003 && react-scripts start",
+    "prebuild": "./version.bat",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
