@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 function VersionComponent({ children }) {
 	const [txt, setTxt] = useState("");
 	useEffect(() => {
-		let path = `./ApyxOne-training/version.txt`;
-        fetch(path)
+        fetch("version.txt") // fetch("ApyxOne-training/version.txt")
 			.then((r) => r.text())
 			.then((text) => {
 				setTxt(text);
