@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ApyxOne-training/static/css/main.76031048.css",
-    "main.js": "/ApyxOne-training/static/js/main.f7743e82.js",
+    "main.js": "/ApyxOne-training/static/js/main.e9361ddf.js",
     "static/js/787.35a77475.chunk.js": "/ApyxOne-training/static/js/787.35a77475.chunk.js",
     "static/media/body.png": "/ApyxOne-training/static/media/body.8323ee5a633d514103aa.png",
     "static/media/RenuvionTopLogo.svg": "/ApyxOne-training/static/media/RenuvionTopLogo.a1eda0a0875c5041e2a20bbd407c6582.svg",
@@ -16,11 +16,11 @@
     "static/media/up.svg": "/ApyxOne-training/static/media/up.f0d1ea311829b9196542669aace4b3bf.svg",
     "static/media/down.svg": "/ApyxOne-training/static/media/down.e3604c909f007f55f07e9403b4d6b834.svg",
     "main.76031048.css.map": "/ApyxOne-training/static/css/main.76031048.css.map",
-    "main.f7743e82.js.map": "/ApyxOne-training/static/js/main.f7743e82.js.map",
+    "main.e9361ddf.js.map": "/ApyxOne-training/static/js/main.e9361ddf.js.map",
     "787.35a77475.chunk.js.map": "/ApyxOne-training/static/js/787.35a77475.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.76031048.css",
-    "static/js/main.f7743e82.js"
+    "static/js/main.e9361ddf.js"
   ]
 }
