@@ -196,6 +196,7 @@ export function Preset({ preset, selected }) {
             backgroundColor: selected ? selectedColor : TITLE_COLOR,
             display: "grid",
             alignItems: "center",
+            fontSize: "0.8rem",
           }}
         >
           {typeof preset.bodyPart.name === 'string' ? preset.bodyPart.name : preset.bodyPart.part}
@@ -211,6 +212,7 @@ export function Preset({ preset, selected }) {
             borderBottomRightRadius: "inherit",
             display: "grid",
             alignItems: "center",
+            fontSize: "0.8rem",
           }}
         >
           {preset.name}

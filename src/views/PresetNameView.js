@@ -88,6 +88,7 @@ const NameInput = styled.input`
 	border: none;
 	text-align: center;
 	color: white;
+	width: 100%;
 
 	::placeholder {
 		color: rgb(64, 90, 147);

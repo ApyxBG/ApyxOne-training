@@ -3,7 +3,7 @@ import { HiOutlineChevronLeft } from "@react-icons/all-files/hi/HiOutlineChevron
 import { HiPlus } from "@react-icons/all-files/hi/HiPlus";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import MainContainer from "../components/common/MainContainer";
 import PresetsListComponent from "../components/PresetsListComponent";
 import { AllPresets, SelectedPreset } from "../store/Preset";
