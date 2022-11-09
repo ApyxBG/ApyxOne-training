@@ -100,7 +100,7 @@ function DataLoggingScreen() {
 									onClick={() => {
 										setModalProps({
 											title: "Patient Age",
-											color: {COAG_COLOR},
+											color: COAG_COLOR,
 											value: patientInfo.age,
 											setValue: (age) => {
 												setPatientInfo({
@@ -136,7 +136,7 @@ function DataLoggingScreen() {
 									onClick={() => {
 										setModalProps({
 											title: "Patient Height",
-											color: {COAG_COLOR},
+											color: COAG_COLOR,
 											value: patientInfo.height,
 											setValue: (height) => {
 												setPatientInfo({
@@ -172,7 +172,7 @@ function DataLoggingScreen() {
 									onClick={() => {
 										setModalProps({
 											title: "Patient Weight",
-											color: {COAG_COLOR},
+											color: COAG_COLOR,
 											value: patientInfo.weight,
 											setValue: (weight) => {
 												setPatientInfo({
@@ -333,7 +333,7 @@ function DataLoggingScreen() {
 									onClick={() => {
 										setModalProps({
 											title: "Patient Tumescent Volume",
-											color: {COAG_COLOR},
+											color: COAG_COLOR,
 											value: procedureInfo.tumVolume,
 											setValue: (tumVolume) => {
 												setProcedureInfo({
@@ -358,7 +358,7 @@ function DataLoggingScreen() {
 									onClick={() => {
 										setModalProps({
 											title: "Patient Aspiration Volume",
-											color: {COAG_COLOR},
+											color: COAG_COLOR,
 											value: procedureInfo.aspirationVolume,
 											setValue: (aspirationVolume) => {
 												setProcedureInfo({

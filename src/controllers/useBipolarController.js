@@ -11,15 +11,21 @@ function useBipolarController(bipolar, setBipolar) {
 	};
 
 	const decPower = () => {
-		let rounded = Math.floor(bipolar.power / 5);
-		let diff = bipolar.power / 5 - rounded;
-		setPower(diff > 0 ? rounded * 5 : bipolar.power - 5);
+		setBipolar((prev) => {
+			let bipolar = prev;
+			let rounded = Math.floor(bipolar.power / 5);
+			let diff = bipolar.power / 5 - rounded;
+			return setPower(diff > 0 ? rounded * 5 : bipolar.power - 5, bipolar);
+		})
 	};
 
 	const incPower = () => {
-		let rounded = Math.floor(bipolar.power / 5);
-		let diff = bipolar.power / 5 - rounded;
-		setPower(diff > 0 ? rounded * 5 + 5 : bipolar.power + 5);
+		setBipolar((prev) => {
+			let bipolar = prev
+			let rounded = Math.floor(bipolar.power / 5);
+			let diff = bipolar.power / 5 - rounded;
+			return setPower(diff > 0 ? rounded * 5 + 5 : bipolar.power + 5, bipolar);
+		});
 	};
 
 	const mySetBipolar = (newBipolar) => {
@@ -27,13 +33,13 @@ function useBipolarController(bipolar, setBipolar) {
 		setBipolar(newBipolar);
 	};
 
-	const setPower = (power) => {
+	const setPower = (power, bipolar) => {
 		if (power > mode.range.max) {
 			power = mode.range.max;
 		} else if (power < mode.range.min) {
 			power = mode.range.min;
 		}
-		setBipolar({ ...bipolar, power });
+		return { ...bipolar, power };
 	};
 	return {
 		bipolar,

@@ -1,6 +1,7 @@
 import React from "react";
-import { CircleButton, IconButton, RoundedBorder } from "../styles/Common";
-import { GrPrevious } from "@react-icons/all-files/gr/GrPrevious";
+import { CircleButton } from "../styles/Common";
+import { BiChevronLeft } from "@react-icons/all-files/bi/BiChevronLeft";
+import { COAG_COLOR } from '../utils/Colors';
 
 function FaceView({
   goBack,
@@ -544,8 +545,8 @@ function FaceView({
           </g>
         </g>
       </svg>
-      <CircleButton bg="#5adda4" className="mt-3" onClick={goBack}>
-        <GrPrevious></GrPrevious>
+      <CircleButton bg={COAG_COLOR} className="mt-3" onClick={goBack}>
+        <BiChevronLeft color='white' size="100%"></BiChevronLeft>
       </CircleButton>
     </>
   );

@@ -4,7 +4,17 @@ import { Box, Content, Title } from "../styles/Card";
 import { HorizontalLine } from "../styles/Common";
 import { TITLE_COLOR } from "../utils/Colors";
 
-function PresetNameView({ name, setName, part }) {
+function PresetNameView({ name, setName, bodyPart, setBodyPartName }) {
+	let partNameValue = "";
+	let showPlaceholder = true;
+	if (bodyPart) {
+		if (typeof bodyPart.name === "string") {
+			partNameValue = bodyPart.name;
+			showPlaceholder = false;
+		} else {
+			partNameValue = bodyPart.part;
+		}
+	}
 	return (
 		<Box>
 			<Title color={TITLE_COLOR}>Preset Name</Title>
@@ -27,13 +37,12 @@ function PresetNameView({ name, setName, part }) {
 						}}
 					>
 						<div style={{ textAlign: "center" }}>
-							{part ? (
-								part
-							) : (
-								<div style={{ color: "rgb(64, 90, 147)" }}>
-									Please Select Body Part
-								</div>
-							)}
+							<NameInput
+								value={partNameValue}
+								onChange={(e) => setBodyPartName(e.target.value)}
+								placeholder={showPlaceholder ? "Type in Body Part" : undefined}
+								maxLength="19"
+							></NameInput>
 						</div>
 						<div
 							style={{
@@ -57,6 +66,7 @@ function PresetNameView({ name, setName, part }) {
 								value={name}
 								onChange={(e) => setName(e.target.value)}
 								placeholder="Type in Name"
+								maxLength="19"
 							></NameInput>
 						</div>
 						<div

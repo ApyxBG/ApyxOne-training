@@ -61,9 +61,9 @@ function FloatKeyboard({
       <button onClick={() => append(0)} className="keyboard-grid__button">
         0
       </button>
-      <button onClick={cut} className="keyboard-grid__delete">
+      <button onClick={cut} className="keyboard-grid__delete" style={{position: "relative"}}>
         {" "}
-        <FiDelete color={color} size={36} />
+        <FiDelete color={color} size={"2.5rem"} style={{position: "absolute", top: "0px", left: "0px"}} />
       </button>
       <div className="grid_filler"></div>
     </KeyboardGrid>

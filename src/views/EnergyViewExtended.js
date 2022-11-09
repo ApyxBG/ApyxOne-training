@@ -41,7 +41,7 @@ function EnergyViewExtended({
 					range={{ min: 0, max: 10 }}
 					title="Energy Counter"
 					subtitle="Total Energy"
-					units="kj"
+					units="kJ"
 					titleColor={NRG_TITLE_COLOR}
 				></PowerSetterComponent>
 			)}
@@ -123,7 +123,7 @@ function EnergyViewExtended({
 									num={`${Math.floor(counter.value)}.${
 										(counter.value * 10) % 10
 									}`}
-									unit={"kj"}
+									unit={"kJ"}
 									mr="0"
 									color={
 										counter.enabled
@@ -170,7 +170,7 @@ function EnergyViewExtended({
 								num={`${Math.floor(limit.value)}.${
 									(limit.value * 10) % 10
 								}`}
-								unit={"kj"}
+								unit={"kJ"}
 								color={
 									limit.enabled
 										? "white"

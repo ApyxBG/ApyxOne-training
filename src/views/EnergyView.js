@@ -32,7 +32,7 @@ function EnergyView({
 					range={{ min: 0, max: 10 }}
 					title="Energy Counter"
 					subtitle="Total Energy"
-					units="kj"
+					units="kJ"
 					titleColor={NRG_TITLE_COLOR}
 				></PowerSetterComponent>
 			)}
@@ -85,7 +85,7 @@ function EnergyView({
 						>{`${Math.floor(counter.value)}.${
 							(counter.value * 10) % 10
 						}`}</span>
-						<span className="">kj</span>
+						<span className="">kJ</span>
 					</div>
 				</div>
 				<div className="">
@@ -136,7 +136,7 @@ function EnergyView({
 						{`${Math.floor(limit.value)}.${
 							(limit.value * 10) % 10
 						}`}{" "}
-						kj MAX
+						kJ MAX
 					</LongButton>
 				</div>
 				<div className="">

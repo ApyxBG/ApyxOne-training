@@ -21,12 +21,21 @@ function PowerSetterView({
 	units,
 	titleColor,
 	subtitleColor,
+	onClose,
 }) {
 	return (
 		<Modal
-			style={{ backgroundColor: "rgb(39, 50, 78)", borderRadius: "34px" }}
+			style={{
+				backgroundColor: "rgb(39, 50, 78)",
+				fontFamily: "OpenSans-Semibold",
+				borderRadius: "0.7rem",
+				overflow: "hidden",
+				width: "25rem",
+				marginRight: "auto",
+				marginLeft: "auto"
+			}}
 			isOpen={true}
-			toggle={onSave}
+			toggle={onClose}
 			contentClassName="override"
 		>
 			<ModalHeader
@@ -36,7 +45,6 @@ function PowerSetterView({
 					padding: ".5rem",
 					justifyContent: "center",
 				}}
-				toggle={onSave}
 				className="justify-content-center"
 			>
 				<Title color={titleColor ? titleColor : TITLE_COLOR}>

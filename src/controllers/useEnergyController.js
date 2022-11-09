@@ -18,29 +18,42 @@ function useEnergyController(energy, setEnergy) {
 		});
 	};
 	const incLimit = () => {
-		if (!energy.limit.enabled) return;
-		let limit = energy.limit.value * 10;
-		let rounded = Math.floor(limit / 5);
-		let diff = limit / 5 - rounded;
-		let value = diff > 0 ? rounded * 5 + 5 : limit + 5;
-		value /= 10;
-		if (value > 10) {
-			value = 10;
-		}
-		setEnergy({ ...energy, limit: { ...energy.limit, value } });
+		setEnergy((prev) => {
+			if (!energy.limit.enabled) {
+				return prev;
+			} else {
+				let energy = prev;
+				let limit = energy.limit.value * 10;
+				let rounded = Math.floor(limit / 5);
+				let diff = limit / 5 - rounded;
+				let value = diff > 0 ? rounded * 5 + 5 : limit + 5;
+				value /= 10;
+				if (value > 10) {
+					value = 10;
+				}
+				return { ...energy, limit: { ...energy.limit, value } };
+			}
+		});
 	};
 	const decLimit = () => {
-		if (!energy.limit.enabled) return;
-		let limit = energy.limit.value * 10;
-		let rounded = Math.floor(limit / 5);
-		let diff = limit / 5 - rounded;
-		let value = diff > 0 ? rounded * 5 : limit - 5;
-		value /= 10;
-		if (value < 0) {
-			value = 0;
-		}
-		setEnergy({ ...energy, limit: { ...energy.limit, value } });
+		setEnergy((prev) => {
+			if (!energy.limit.enabled) {
+				return prev;
+			} else {
+				let energy = prev;
+				let limit = energy.limit.value * 10;
+				let rounded = Math.floor(limit / 5);
+				let diff = limit / 5 - rounded;
+				let value = diff > 0 ? rounded * 5 : limit - 5;
+				value /= 10;
+				if (value < 0) {
+					value = 0;
+				}
+				return { ...energy, limit: { ...energy.limit, value } };
+			}
+		});
 	};
+	
 	const switchLimitEnabled = () => {
 		if (energy.counter.enabled) {
 			setEnergy({

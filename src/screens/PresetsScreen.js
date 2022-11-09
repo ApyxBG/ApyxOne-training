@@ -2,7 +2,7 @@ import { BsQuestion } from "@react-icons/all-files/bs/BsQuestion";
 import { HiOutlineChevronLeft } from "@react-icons/all-files/hi/HiOutlineChevronLeft";
 import { HiPlus } from "@react-icons/all-files/hi/HiPlus";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import MainContainer from "../components/common/MainContainer";
 import PresetsListComponent from "../components/PresetsListComponent";
@@ -14,24 +14,99 @@ import PresetSettingsView from "../views/PresetSettingsView";
 import PencilIcon from "../public/images/pencil.svg";
 import TrashCan from "../public/images/trashcan.png";
 import { VIEWS } from "../utils/HelpViewUtils";
-import { COAG_COLOR } from "../utils/Colors"
+import { COAG_COLOR, MAIN_BG_COLOR } from "../utils/Colors"
+import ModalView from '../views/ModalView';
+import { generateDisplayName } from '../utils/PresetUtils';
+
+const iconBtnStl = {
+	height: "70%",
+	width: "40%",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	alignSelf: "center",
+	justifySelf: "center",
+	fontSize: "90%",
+	minWidth: "unset"
+};
 
 function PresetsScreen() {
 	const navigate = useNavigate();
-	const allPresets = useRecoilValue(AllPresets);
-	const [, setSelectedPreset] = useRecoilState(SelectedPreset);
+	const location = useLocation();
+	const [allPresets, setAllPresets] = useRecoilState(AllPresets);
+	const [selectedPreset, setSelectedPreset] = useRecoilState(SelectedPreset);
+	const [tryDelete, setTryDelete] = useState(false);
 
-	const [currentPreset, setCurrentPreset] = useState(
-		allPresets.length > 0 ? allPresets[0] : null
-	);
+	const getInitialPreset = () => {
+		if (allPresets.length > 0) {
+			return location.state?.preset || allPresets[0];
+		} else {
+			return null;
+		}
+	}
+	const [currentPreset, setCurrentPreset] = useState(getInitialPreset());
+
+	const deletePreset = () => {
+		let newPresetsList = allPresets.filter((preset) => preset.id !== currentPreset.id);
+		setAllPresets(newPresetsList);
+		setCurrentPreset(newPresetsList.length > 0 ? newPresetsList[0] : null);
+		if (selectedPreset?.id === currentPreset.id) {
+			setSelectedPreset(null);
+		}
+		setTryDelete(false);
+	}
 
 	return (
 		<MainContainer>
+			{tryDelete && (
+				<ModalView>
+					<Box style={{ width: "18rem", height: "10rem" }}>
+						<div
+							style={{
+								width: "100%",
+								height: "70%",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							Do you want to delete the Preset?
+						</div>
+						<div
+							style={{
+								width: "100%",
+								height: "30%",
+								display: "flex",
+								justifyContent: "space-around",
+								alignItems: "center",
+								marginTop: "-1rem",
+							}}
+						>
+							<IconButton
+								style={iconBtnStl}
+								color={MAIN_BG_COLOR}
+								onClick={() => {
+									setTryDelete(false);
+								}}
+							>
+								NO
+							</IconButton>
+							<IconButton
+								style={iconBtnStl}
+								color={COAG_COLOR}
+								onClick={deletePreset}
+							>
+								YES
+							</IconButton>
+						</div>
+					</Box>
+				</ModalView>
+			)}
 			<NavBar
 				leftButtons={[
 					{
 						onClick: () => {
-							navigate(-1);
+							navigate("/");
 						},
 						icon: (
 							<HiOutlineChevronLeft
@@ -45,7 +120,11 @@ function PresetsScreen() {
 				rightButtons={[
 					{
 						onClick: () => {
-							navigate("/createpreset");
+							navigate("/createpreset", {
+								state: {
+									from: "/allpresets"
+								}
+							});
 						},
 						icon: <HiPlus color="white" size="85%"></HiPlus>,
 					},
@@ -80,10 +159,7 @@ function PresetsScreen() {
 						position: "relative",
 					}}
 				>
-					{currentPreset &&
-						`${currentPreset.bodyPart?.part} - ${
-							currentPreset.name || ""
-						}`}
+					{currentPreset && generateDisplayName(currentPreset)}
 					<div
 						style={{
 							bottom: "0px",
@@ -101,6 +177,7 @@ function PresetsScreen() {
 								navigate("/createpreset", {
 									state: {
 										preset: currentPreset,
+										from: "/allpresets"
 									},
 								});
 							}}
@@ -112,6 +189,12 @@ function PresetsScreen() {
 								padding: "0.5rem",
 							}}
 							bg="rgb(23, 34, 56)"
+							onClick={() => {
+									if (currentPreset) {
+										setTryDelete(true)
+									}
+								}
+							}
 						>
 							<img
 								alt=""
@@ -165,7 +248,7 @@ function PresetsScreen() {
 							navigate("/");
 						}}
 					>
-						Load Preset
+						LOAD PRESET
 					</IconButton>
 				</div>
 			</Box>

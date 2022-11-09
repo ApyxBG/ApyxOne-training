@@ -23,6 +23,7 @@ import { COAG_COLOR, LABEL_DISABLED, MAIN_BG_COLOR } from "../utils/Colors";
 import { Box } from "../styles/Card";
 import { IconButton } from "../styles/Common";
 import { VIEWS } from "../utils/HelpViewUtils";
+import { generateDisplayName } from '../utils/PresetUtils';
 
 const iconBtnStl = {
 	height: "70%",
@@ -203,9 +204,7 @@ function ElectrosurgeryScreen() {
 			<NavBar
 				textAbove={
 					selectedPreset
-						? `${selectedPreset.bodyPart?.part} - ${
-								selectedPreset.name || ""
-						  }${selectedPreset.modified ? " : MODIFIED!" : ""}`
+						? `${generateDisplayName(selectedPreset)}${selectedPreset.modified ? " : MODIFIED!" : ""}`
 						: null
 				}
 				textAboveColor={
@@ -247,7 +246,9 @@ function ElectrosurgeryScreen() {
 						icon: "save",
 					},
 					{
-						onClick: () => {},
+						onClick: () => {
+							navigate("/datalogging");
+						},
 						icon: "profile",
 					},
 					{

@@ -8,7 +8,7 @@ export const Box = styled.div`
   width: 100%;
   height: 100%;
   color: white;
-  font-family: OpenSans-SemiBold;
+  font-family: OpenSans-Semibold;
 `;
 
 export const ModalBox = styled.div`
@@ -19,7 +19,7 @@ export const ModalBox = styled.div`
   height: max-content;
   min-width: 18em;
   color: white;
-  font-family: OpenSans-SemiBold;
+  font-family: OpenSans-Semibold;
 `;
 
 export const Title = styled.div`

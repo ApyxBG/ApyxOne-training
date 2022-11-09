@@ -32,7 +32,7 @@ export const CutModes = {
 };
 
 export const CoagModes = {
-  SPAY: {
+  SPRAY: {
     id: "spray",
     label: "SPRAY",
     range: { min: 0, max: 120 },
@@ -81,8 +81,8 @@ export function getCoagMode(id) {
   switch (id) {
     case CoagModes.GENTLE.id:
       return CoagModes.GENTLE;
-    case CoagModes.SPAY.id:
-      return CoagModes.SPAY;
+    case CoagModes.SPRAY.id:
+      return CoagModes.SPRAY;
     case CoagModes.PINPOINT.id:
       return CoagModes.PINPOINT;
     default:
@@ -91,7 +91,7 @@ export function getCoagMode(id) {
 }
 
 export const allCoagModes = [
-  CoagModes.GENTLE,
+  CoagModes.SPRAY,
   CoagModes.PINPOINT,
-  CoagModes.SPAY,
+  CoagModes.GENTLE,
 ];

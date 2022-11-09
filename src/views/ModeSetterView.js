@@ -25,13 +25,17 @@ function ModeSetterView({
 		<Modal
 			style={{
 				backgroundColor: "rgb(39, 50, 78)",
-				borderRadius: "34px",
+				borderRadius: "0.7rem",
+				overflow: "hidden",
 				width: "35rem",
 				maxWidth: "unset",
 				marginTop: "5%",
+				fontFamily: "OpenSans-Semibold",
+				marginRight: "auto",
+				marginLeft: "auto"
 			}}
 			isOpen={true}
-			toggle={onSave}
+			toggle={onClose}
 			contentClassName="override"
 		>
 			<ModalHeader
@@ -39,9 +43,8 @@ function ModeSetterView({
 					backgroundColor: "#405A93",
 					border: "none",
 					padding: ".5rem",
-					justifyContent: "center",
+					justifyContent: "center"
 				}}
-				toggle={onClose}
 				className="justify-content-center"
 			>
 				<Title color={TITLE_COLOR}>{title}</Title>
@@ -49,9 +52,7 @@ function ModeSetterView({
 			<ModalBody
 				style={{
 					backgroundColor: "rgb(39, 50, 78)",
-					paddingTop: 0,
-					borderBottomLeftRadius: "15px",
-					borderBottomRightRadius: "15px",
+					paddingTop: 0
 				}}
 			>
 				<div
@@ -75,7 +76,7 @@ function ModeSetterView({
 				>
 					<div
 						className="d-flex flex-column p-3"
-						style={{ gap: ".7rem" }}
+						style={{ gap: ".7rem", justifyContent: "center" }}
 					>
 						{enumValues.map((value) => {
 							return (

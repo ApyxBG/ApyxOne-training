@@ -26,6 +26,9 @@ const arrowStl = {
 	width: "15%",
 	position: "absolute",
 	right: "2.5%",
+	display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
 };
 function StatusScreen() {
 	const navigate = useNavigate();
@@ -74,7 +77,7 @@ function StatusScreen() {
 						<div style={arrowStl}>
 							{view === VIEWS.GS && (
 								<HiOutlineChevronRight
-									size="100% 100%"
+									size="70%"
 									color={COAG_COLOR}
 								></HiOutlineChevronRight>
 							)}
@@ -92,7 +95,7 @@ function StatusScreen() {
 						<div style={arrowStl}>
 							{view === VIEWS.PHS && (
 								<HiOutlineChevronRight
-									size="100% 100%"
+									size="70%"
 									color={COAG_COLOR}
 								></HiOutlineChevronRight>
 							)}
@@ -110,7 +113,7 @@ function StatusScreen() {
 						<div style={arrowStl}>
 							{view === VIEWS.AS && (
 								<HiOutlineChevronRight
-									size="100% 100%"
+									size="70%"
 									color={COAG_COLOR}
 								></HiOutlineChevronRight>
 							)}
@@ -128,7 +131,7 @@ function StatusScreen() {
 						<div style={arrowStl}>
 							{view === VIEWS.NEM && (
 								<HiOutlineChevronRight
-									size="100% 100%"
+									size="70%"
 									color={COAG_COLOR}
 								></HiOutlineChevronRight>
 							)}
@@ -146,7 +149,7 @@ function StatusScreen() {
 						<div style={arrowStl}>
 							{view === VIEWS.GTP && (
 								<HiOutlineChevronRight
-									size="100% 100%"
+									size="70%"
 									color={COAG_COLOR}
 								></HiOutlineChevronRight>
 							)}

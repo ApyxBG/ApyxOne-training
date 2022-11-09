@@ -8,48 +8,60 @@ function useMonopolarController(monopolar, setMonopolar) {
 	const coagMode = getCoagMode(coag.mode);
 
 	const incCut = () => {
-		let rounded = Math.floor(cut.power / 5);
-		let diff = cut.power / 5 - rounded;
-		setCutPower(diff > 0 ? rounded * 5 + 5 : cut.power + 5);
+		setMonopolar((prev => {
+			let cut = prev.cut;
+			let rounded = Math.floor(cut.power / 5);
+			let diff = cut.power / 5 - rounded;
+			return setCutPower(diff > 0 ? rounded * 5 + 5 : cut.power + 5, prev);
+		}));
 	};
 
 	const decCut = () => {
-		let rounded = Math.floor(cut.power / 5);
-		let diff = cut.power / 5 - rounded;
-		setCutPower(diff > 0 ? rounded * 5 : cut.power - 5);
+		setMonopolar((prev) => {
+			let cut = prev.cut;
+			let rounded = Math.floor(cut.power / 5);
+			let diff = cut.power / 5 - rounded;
+			return setCutPower(diff > 0 ? rounded * 5 : cut.power - 5, prev);
+		});
 	};
 
-	const setCutPower = (power) => {
+	const setCutPower = (power, monopolar) => {
 		if (power > cutMode.range.max) {
 			power = cutMode.range.max;
 		} else if (power < cutMode.range.min) {
 			power = cutMode.range.min;
 		}
-		setMonopolar({
+		return {
 			...monopolar,
-			cut: { ...cut, power },
-		});
+			cut: { ...monopolar.cut, power },
+		}
 	};
 
 	const incCoag = () => {
-		let rounded = Math.floor(coag.power / 5);
-		let diff = coag.power / 5 - rounded;
-		setCoagPower(diff > 0 ? rounded * 5 + 5 : coag.power + 5);
+		setMonopolar((prev) => {
+			let coag = prev.coag;
+			let rounded = Math.floor(coag.power / 5);
+			let diff = coag.power / 5 - rounded;
+			return setCoagPower(diff > 0 ? rounded * 5 + 5 : coag.power + 5, prev);
+		});
 	};
 
 	const decCoag = () => {
-		let rounded = Math.floor(coag.power / 5);
-		let diff = coag.power / 5 - rounded;
-		setCoagPower(diff > 0 ? rounded * 5 : coag.power - 5);
+		setMonopolar((prev) => {
+			let coag = prev.coag;
+			let rounded = Math.floor(coag.power / 5);
+			let diff = coag.power / 5 - rounded;
+			return setCoagPower(diff > 0 ? rounded * 5 : coag.power - 5, prev);
+		});
 	};
 
-	const setCoagPower = (power) => {
+	const setCoagPower = (power, monopolar) => {
 		if (power > coagMode.range.max) {
 			power = coagMode.range.max;
 		} else if (power < coagMode.range.min) {
 			power = coagMode.range.min;
 		}
-		setMonopolar({ ...monopolar, coag: { ...coag, power } });
+		return { ...monopolar, coag: { ...monopolar.coag, power } };
 	};
 
 	const [showCutModal, setShowCutModal] = useState(false);

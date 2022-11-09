@@ -113,7 +113,10 @@ function HeliumView({
 							className="p-2"
 						>
 							<div className="d-flex justify-content-center">
-								<RoundedBorder color="#AA37C7">
+								<RoundedBorder
+									color="#AA37C7"
+									onClick={onShowRenuvionModal}
+								>
 									POWER
 								</RoundedBorder>
 							</div>
@@ -182,12 +185,16 @@ function HeliumView({
 							<span className="icon">
 								{getIcon("bottle", null, "3.8rem", "6rem")}
 							</span>
+							<span className='rotate270deg' style={{position: "absolute", top: "50%", left: "25%", fontWeight: "bold"}}>
+								60%
+							</span>
 						</div>
 						<div style={{width: "100%"}}>
 							<div className="d-flex justify-content-center">
 								<RoundedBorder
 									className="px-2"
 									color={NRG_COLOR}
+									onClick={onShowFlowModal}
 								>
 									Helium Gas Flow
 								</RoundedBorder>

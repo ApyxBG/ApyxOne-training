@@ -27,6 +27,10 @@ function ModeSetterComponent({
     setObj({ ...obj, mode: mode.id, power });
   };
 
+  const onClose = () => {
+    setObj(obj);
+  }
+
   const setPowerWrapper = (value) => {
     setPower(value);
     setIsFreshKeyboard(true);
@@ -50,6 +54,7 @@ function ModeSetterComponent({
       modeTitle={modeTitle}
       isFreshKeyboard={isFreshKeyboard}
       setPowerFromKeyboard={setPowerFromKeyboard}
+      onClose={onClose}
     ></ModeSetterView>
   );
 }

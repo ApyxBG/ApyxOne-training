@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   color: ${({ isSelected, color }) => (isSelected ? color : "#fff")};
   cursor: pointer;
 `;

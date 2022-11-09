@@ -27,7 +27,7 @@ export const Monopolar1 = atom({
             units: "w",
         },
         coag: {
-            mode: CoagModes.SPAY.id,
+            mode: CoagModes.SPRAY.id,
             power: 0,
             units: "w",
         }
@@ -43,7 +43,7 @@ export const Monopolar2 = atom({
             units: "w",
         },
         coag: {
-            mode: CoagModes.SPAY.id,
+            mode: CoagModes.SPRAY.id,
             power: 0,
             units: "w",
         }
@@ -65,7 +65,7 @@ export const Helium = atom({
     default: {
         renuvion: 0,
         coolCoag: {
-            mode: CoagModes.SPAY.id,
+            mode: CoagModes.SPRAY.id,
             power: 0,
             units: "w",
         },

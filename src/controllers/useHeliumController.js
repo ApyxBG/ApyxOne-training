@@ -10,41 +10,53 @@ function useHeliumController(helium, setHelium) {
 	const coagMode = getCoagMode(coag.mode);
 
 	const incCoag = () => {
-		let rounded = Math.floor(coag.power / 5);
-		let diff = coag.power / 5 - rounded;
-		setCoagPower(diff > 0 ? rounded * 5 + 5 : coag.power + 5);
+		setHelium((prev) => {
+			let coag = prev.coolCoag;
+			let rounded = Math.floor(coag.power / 5);
+			let diff = coag.power / 5 - rounded;
+			return setCoagPower(diff > 0 ? rounded * 5 + 5 : coag.power + 5, prev);
+		});
 	};
 
 	const decCoag = () => {
-		let rounded = Math.floor(coag.power / 5);
-		let diff = coag.power / 5 - rounded;
-		setCoagPower(diff > 0 ? rounded * 5 : coag.power - 5);
+		setHelium((prev) => {
+			let coag = prev.coolCoag;
+			let rounded = Math.floor(coag.power / 5);
+			let diff = coag.power / 5 - rounded;
+			return setCoagPower(diff > 0 ? rounded * 5 : coag.power - 5, prev);
+		});
 	};
 
-	const setCoagPower = (power) => {
+	const setCoagPower = (power, helium) => {
 		if (power > coagMode.range.max) {
 			power = coagMode.range.max;
 		} else if (power < coagMode.range.min) {
 			power = coagMode.range.min;
 		}
-		setHelium({ ...helium, coolCoag: { ...coag, power } });
+		return { ...helium, coolCoag: { ...helium.coolCoag, power } };
 	};
 
 	const decHeliumFlow = () => {
-		let flow = helium.flow * 10;
-		let rounded = Math.floor(flow / 5);
-		let diff = flow / 5 - rounded;
-		setFlowValue(diff > 0 ? rounded * 5 : flow - 5);
+		setHelium((prev) => {
+			let helium = prev;
+			let flow = helium.flow * 10;
+			let rounded = Math.floor(flow / 5);
+			let diff = flow / 5 - rounded;
+			return setFlowValue(diff > 0 ? rounded * 5 : flow - 5, helium);
+		});
 	};
 
 	const incHeliumFlow = () => {
-		let flow = helium.flow * 10;
-		let rounded = Math.floor(flow / 5);
-		let diff = flow / 5 - rounded;
-		setFlowValue(diff > 0 ? rounded * 5 + 5 : flow + 5);
+		setHelium((prev) => {
+			let helium = prev;
+			let flow = helium.flow * 10;
+			let rounded = Math.floor(flow / 5);
+			let diff = flow / 5 - rounded;
+			return setFlowValue(diff > 0 ? rounded * 5 + 5 : flow + 5, helium);
+		});
 	};
 
-	const setFlowValue = (flow) => {
+	const setFlowValue = (flow, helium) => {
 		flow /= 10;
 		if (flow > 5) {
 			flow = 5;
@@ -52,28 +64,38 @@ function useHeliumController(helium, setHelium) {
 			flow = 0;
 		}
 		flow = restrictFloat(flow);
-		setHelium({ ...helium, flow });
+		return { ...helium, flow };
 	};
 
 	const decRenuv = () => {
-		if (helium.renuvion > 0) {
-			let rounded = Math.floor(helium.renuvion / 5);
-			let diff = helium.renuvion / 5 - rounded;
-			setHelium({
-				...helium,
-				renuvion: diff > 0 ? rounded * 5 : helium.renuvion - 5,
-			});
-		}
+		setHelium((prev) => {
+			let helium = prev;
+			if (helium.renuvion > 0) {
+				let rounded = Math.floor(helium.renuvion / 5);
+				let diff = helium.renuvion / 5 - rounded;
+				return {
+					...helium,
+					renuvion: diff > 0 ? rounded * 5 : helium.renuvion - 5,
+				};
+			} else {
+				return helium;
+			}
+		});
 	};
 	const incRenuv = () => {
-		if (helium.renuvion < 100) {
-			let rounded = Math.floor(helium.renuvion / 5);
-			let diff = helium.renuvion / 5 - rounded;
-			setHelium({
-				...helium,
-				renuvion: diff > 0 ? rounded * 5 + 5 : helium.renuvion + 5,
-			});
-		}
+		setHelium((prev) => {
+			let helium = prev;
+			if (helium.renuvion < 100) {
+				let rounded = Math.floor(helium.renuvion / 5);
+				let diff = helium.renuvion / 5 - rounded;
+				return {
+					...helium,
+					renuvion: diff > 0 ? rounded * 5 + 5 : helium.renuvion + 5,
+				};
+			} else {
+				return helium;
+			}
+		});
 	};
 
 	const setCoag = (newCoag) => {

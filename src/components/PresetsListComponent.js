@@ -26,7 +26,7 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
     } else {
       setPresets(allPresets);
     }
-  }, [filter]);
+  }, [filter, allPresets]);
 
   useEffect(() => {
     if (presets && presets.length > 0 && !presets.includes(selectedPreset)) {
@@ -185,7 +185,7 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
 }
 
 export function Preset({ preset, selected }) {
-  const selectedColor = {COAG_COLOR};
+  const selectedColor = COAG_COLOR;
   return (
     preset && (
       <>
@@ -198,7 +198,7 @@ export function Preset({ preset, selected }) {
             alignItems: "center",
           }}
         >
-          {preset.bodyPart.part}
+          {typeof preset.bodyPart.name === 'string' ? preset.bodyPart.name : preset.bodyPart.part}
         </div>
         <div
           style={{

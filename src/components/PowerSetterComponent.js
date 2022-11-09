@@ -9,6 +9,10 @@ function PowerSetterComponent({ title, color, value, setValue, range, isFloat, u
         setValue(power);
     }
 
+    const onClose = () => {
+        setValue(value);
+    }
+
     const setPowerWrapper = (value) => {
         setPower(value);
         setIsFreshKeyboard(true);
@@ -34,6 +38,7 @@ function PowerSetterComponent({ title, color, value, setValue, range, isFloat, u
             units={units}
             titleColor={titleColor}
             subtitleColor={subtitleColor}
+            onClose={onClose}
 		></PowerSetterView>
     );
 }

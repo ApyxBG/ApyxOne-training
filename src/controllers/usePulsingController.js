@@ -16,45 +16,67 @@ function usePulsingController(pulsing, setPulsing) {
 		setPulsing({ ...pulsing, enabled: !pulsing.enabled });
 	};
 	const incOnTime = () => {
-		if (!pulsing.enabled) return;
-		let rounded = Math.floor(pulsing.onTime / 5);
-		let diff = pulsing.onTime / 5 - rounded;
-		setPulsing({
-			...pulsing,
-			onTime: restrictValue(
-				diff > 0 ? rounded * 5 + 5 : pulsing.onTime + 5
-			),
+		setPulsing((prev) => {
+			if (!pulsing.enabled) {
+				return prev;
+			} else {
+				let pulsing = prev;
+				let rounded = Math.floor(pulsing.onTime / 5);
+				let diff = pulsing.onTime / 5 - rounded;
+				return {
+					...pulsing,
+					onTime: restrictValue(
+						diff > 0 ? rounded * 5 + 5 : pulsing.onTime + 5
+					),
+				};
+			}
 		});
 	};
 	const decOnTime = () => {
-		if (!pulsing.enabled) return;
-		let rounded = Math.floor(pulsing.onTime / 5);
-		let diff = pulsing.onTime / 5 - rounded;
-		setPulsing({
-			...pulsing,
-			onTime: restrictValue(diff > 0 ? rounded * 5 : pulsing.onTime - 5),
+		setPulsing((prev) => {
+			if (!pulsing.enabled) {
+				return prev;
+			} else {
+				let pulsing = prev;
+				let rounded = Math.floor(pulsing.onTime / 5);
+				let diff = pulsing.onTime / 5 - rounded;
+				return {
+					...pulsing,
+					onTime: restrictValue(diff > 0 ? rounded * 5 : pulsing.onTime - 5),
+				};
+			}
 		});
 	};
 	const incOffTime = () => {
-		if (!pulsing.enabled) return;
-		let rounded = Math.floor(pulsing.offTime / 5);
-		let diff = pulsing.offTime / 5 - rounded;
-		setPulsing({
-			...pulsing,
-			offTime: restrictValue(
-				diff > 0 ? rounded * 5 + 5 : pulsing.offTime + 5
-			),
+		setPulsing((prev) => {
+			if (!pulsing.enabled) {
+				return prev;
+			} else {
+				let pulsing = prev;
+				let rounded = Math.floor(pulsing.offTime / 5);
+				let diff = pulsing.offTime / 5 - rounded;
+				return {
+					...pulsing,
+					offTime: restrictValue(
+						diff > 0 ? rounded * 5 + 5 : pulsing.offTime + 5
+					),
+				};
+			}
 		});
 	};
 	const decOffTime = () => {
-		if (!pulsing.enabled) return;
-		let rounded = Math.floor(pulsing.offTime / 5);
-		let diff = pulsing.offTime / 5 - rounded;
-		setPulsing({
-			...pulsing,
-			offTime: restrictValue(
-				diff > 0 ? rounded * 5 : pulsing.offTime - 5
-			),
+		setPulsing((prev) => {
+			if (!pulsing.enabled) {
+				return prev;
+			} else {
+				let pulsing = prev;
+				let rounded = Math.floor(pulsing.offTime / 5);
+				let diff = pulsing.offTime / 5 - rounded;
+				return {
+					...pulsing,
+					offTime: restrictValue(diff > 0 ? rounded * 5 : pulsing.offTime - 5),
+				};
+			}
 		});
 	};
 	const restrictValue = (power) => {

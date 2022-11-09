@@ -12,7 +12,7 @@ export const KeyboardGrid = styled.div`
     height: 2.5rem;
     color: white;
     background: ${({ themeColor }) => themeColor};
-    border-radius: 34px;
+    border-radius: 50%;
     box-shadow: 1px 6px 6px rgb(0 0 0 / 90%);
   }
 

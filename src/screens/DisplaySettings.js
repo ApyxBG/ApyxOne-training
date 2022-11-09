@@ -121,7 +121,7 @@ function DisplaySettings() {
 								width="auto"
 								src={pencil}
 							></img>
-							Welcome Messge
+							Welcome Message
 						</Title>
 						<Content
 							style={{
@@ -183,6 +183,7 @@ function DisplaySettings() {
 								alignItems: "center",
 								alignSelf: "center",
 								justifySelf: "center",
+								fontFamily: "OpenSans-Semibold"
 							}}
 							color={COAG_COLOR}
 							onClick={apply}

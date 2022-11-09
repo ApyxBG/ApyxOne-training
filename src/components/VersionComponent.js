@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 function VersionComponent({ children }) {
 	const [txt, setTxt] = useState("");
 	useEffect(() => {
-        fetch("version.txt") // fetch("ApyxOne-training/version.txt")
+        fetch("/version.txt") // fetch("ApyxOne-training/version.txt")
 			.then((r) => r.text())
 			.then((text) => {
-				setTxt(text);
+				setTxt("asd");
 			})
 			.catch((e) => console.log(e));
 	}, []);

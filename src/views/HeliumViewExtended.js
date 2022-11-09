@@ -63,6 +63,7 @@ function HeliumViewExtended({
 					title="Renuvion Plasma"
 					subtitle="Power"
 					units="%"
+					titleColor={NRG_TITLE_COLOR}
 				></PowerSetterComponent>
 			)}
 			{showFlowModal && (
@@ -75,6 +76,7 @@ function HeliumViewExtended({
 					title="Helium Gas Flow"
 					subtitle="Gas Flow"
 					units="l/min"
+					titleColor={NRG_TITLE_COLOR}
 				></PowerSetterComponent>
 			)}
 
@@ -117,7 +119,10 @@ function HeliumViewExtended({
 								className="p-2"
 							>
 								<div className="d-flex justify-content-center">
-									<RoundedBorder color={NRG_COLOR}>
+									<RoundedBorder
+										color={NRG_COLOR}
+										onClick={onShowRenuvionModal}
+									>
 										POWER
 									</RoundedBorder>
 								</div>
@@ -185,6 +190,7 @@ function HeliumViewExtended({
 											<RoundedBorder
 												className="px-2"
 												color="#AA37C7"
+												onClick={onShowFlowModal}
 											>
 												Helium Gas Flow
 											</RoundedBorder>
@@ -192,15 +198,18 @@ function HeliumViewExtended({
 
 										<div className="d-flex justify-content-between">
 											{" "}
-											<div className="">
+											<div className="" style={{position: 'relative'}}>
 												{" "}
 												<span className="icon">
 													{getIcon(
 														"bottle",
-														"white",
+														null,
 														"4.8rem",
 														"7rem"
 													)}
+												</span>
+												<span className='rotate270deg' style={{position: "absolute", top: "50%", left: "25%", fontSize: '1.2rem'}}>
+													60%
 												</span>
 											</div>
 											<UnitContainer isTwoCol={false}>
@@ -239,22 +248,25 @@ function HeliumViewExtended({
 						</Title>
 						<div className="ps-0 p-2">
 							<div className="d-flex justify-content-center">
-								<RoundedBorder className="px-2" color="#AA37C7">
+								<RoundedBorder className="px-2" color="#AA37C7" onClick={onShowFlowModal}>
 									Helium Gas Flow
 								</RoundedBorder>
 							</div>
 
 							<div className="d-flex justify-content-between">
 								{" "}
-								<div className="">
+								<div className="" style={{position: 'relative'}}>
 									{" "}
 									<span className="icon">
 										{getIcon(
 											"bottle",
-											"white",
+											null,
 											"3.8rem",
 											"6rem"
 										)}
+									</span>
+									<span className='rotate270deg' style={{position: "absolute", top: "50%", left: "25%", fontWeight: "bold"}}>
+										60%
 									</span>
 								</div>
 								<UnitContainer isTwoCol={false}>

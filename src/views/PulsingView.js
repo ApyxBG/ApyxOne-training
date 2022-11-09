@@ -2,7 +2,7 @@ import React from "react";
 import PowerSetterComponent from "../components/PowerSetterComponent";
 import { Box } from "../styles/Card";
 import { LongButton } from "../styles/Common";
-import { NRG_COLOR, NRG_TITLE_COLOR } from "../utils/Colors";
+import { MAIN_BG_COLOR, NRG_COLOR, NRG_TITLE_COLOR } from "../utils/Colors";
 import ToggleButton from "./ToggleButton";
 
 function PulsingView({
@@ -73,13 +73,13 @@ function PulsingView({
         <div className="d-flex flex-column gap-3">
           <LongButton
             textColor={enabled ? "white" : "#405A93"}
-            color="#172238"
+            color={enabled ? NRG_COLOR : MAIN_BG_COLOR}
             onClick={onShowOnTimeModal}
             fontSize="0.9rem"
           >{`${onTime} ms ON TIME`}</LongButton>
           <LongButton
             textColor={enabled ? "white" : "#405A93"}
-            color="#172238"
+            color={enabled ? NRG_COLOR : MAIN_BG_COLOR}
             onClick={onShowOffTimeModal}
             fontSize="0.9rem"
           >{`${offTime} ms OFF TIME`}</LongButton>

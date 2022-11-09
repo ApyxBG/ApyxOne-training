@@ -168,7 +168,7 @@ function PresetSettingsView({ preset, setPreset }) {
 						range={{ min: 0, max: 10 }}
 						title="Energy Counter"
 						subTitle="Total Energy"
-						units="kj"
+						units="kJ"
 					></PowerSetterComponent>
 				)}
 				{setPreset && pulsingController.showOnTimeModal && (
@@ -237,8 +237,10 @@ function PresetSettingsView({ preset, setPreset }) {
 										<IconButton
 											style={{
 												boxShadow: "none",
-												width: "80%",
+												width: "100%",
 												minWidth: "unset",
+												display: "flex",
+												justifyContent: "space-around"
 											}}
 											color="inherit"
 											iconColor={CUT_COLOR}
@@ -295,8 +297,10 @@ function PresetSettingsView({ preset, setPreset }) {
 										<IconButton
 											style={{
 												boxShadow: "none",
-												width: "80%",
+												width: "100%",
 												minWidth: "unset",
+												display: "flex",
+												justifyContent: "space-around"
 											}}
 											color="inherit"
 											iconColor={COAG_COLOR}
@@ -357,8 +361,10 @@ function PresetSettingsView({ preset, setPreset }) {
 										<IconButton
 											style={{
 												boxShadow: "none",
-												width: "80%",
+												width: "100%",
 												minWidth: "unset",
+												display: "flex",
+												justifyContent: "space-around"
 											}}
 											color="inherit"
 											iconColor={CUT_COLOR}
@@ -415,8 +421,10 @@ function PresetSettingsView({ preset, setPreset }) {
 										<IconButton
 											style={{
 												boxShadow: "none",
-												width: "80%",
+												width: "100%",
 												minWidth: "unset",
+												display: "flex",
+												justifyContent: "space-around"
 											}}
 											color="inherit"
 											iconColor={COAG_COLOR}
@@ -602,8 +610,10 @@ function PresetSettingsView({ preset, setPreset }) {
 										<IconButton
 											style={{
 												boxShadow: "none",
-												width: "80%",
+												width: "100%",
 												minWidth: "unset",
+												display: "flex",
+												justifyContent: "space-around"
 											}}
 											color="inherit"
 											iconColor={COAG_COLOR}
@@ -694,7 +704,7 @@ function PresetSettingsView({ preset, setPreset }) {
 								></ToggleButton>
 								<div
 									style={{
-										marginLeft: "1.5rem",
+										marginLeft: "0.5rem",
 										fontSize: "0.6rem",
 										height: "100%",
 										justifyContent: "center",
@@ -730,7 +740,7 @@ function PresetSettingsView({ preset, setPreset }) {
 								<div
 									style={{
 										fontSize: "0.6rem",
-										marginLeft: "1.5rem",
+										marginLeft: "0.5rem",
 									}}
 									className="d-flex flex-column "
 								>
@@ -756,7 +766,7 @@ function PresetSettingsView({ preset, setPreset }) {
 										}`}
 									</div>
 									<div style={{ display: "inline-block" }}>
-										kj
+										kJ
 									</div>
 								</div>
 							</div>
@@ -782,7 +792,7 @@ function PresetSettingsView({ preset, setPreset }) {
 								<div
 									style={{
 										fontSize: "0.6rem",
-										marginLeft: "1.5rem",
+										marginLeft: "0.5rem",
 										justifyContent: "center",
 									}}
 									className="d-flex flex-column "

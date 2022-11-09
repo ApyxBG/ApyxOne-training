@@ -5,6 +5,7 @@ import MainContainer from "../components/common/MainContainer";
 import NavBar from "../views/NavBar";
 import { HiOutlineChevronLeft } from "@react-icons/all-files/hi/HiOutlineChevronLeft";
 import { BsQuestion } from "@react-icons/all-files/bs/BsQuestion";
+import { BiCheck } from "@react-icons/all-files/bi/BiCheck";
 import BodyComponent from "../components/BodyComponent";
 import PresetNameView from "../views/PresetNameView";
 import { useRecoilState } from "recoil";
@@ -32,6 +33,9 @@ function CreatePresetScreen() {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const [tryDiscard, setTryDiscard] = useState(false);
+	const [showSaved, setShowSaved] = useState(false);
+	const [showSelectPart, setShowSelectPart] = useState(false);
+
 	const [preset, setPreset] = useState(
 		location.state && location.state.preset
 			? location.state.preset
@@ -42,22 +46,40 @@ function CreatePresetScreen() {
 
 	const [allPresets, setAllPresets] = useRecoilState(AllPresets);
 
-	const save = () => {
-		if (!preset.bodyPart.part) {
+	const save = (newPresetsList, newPreset) => {
+		setAllPresets(newPresetsList);
+		setPreset(newPreset);
+		setShowSaved(true);
+	}
+
+	const navigateOut = () => {
+		if (location.state?.from) {
+			navigate(location.state.from, {
+				state: {
+					preset
+				}
+			});
 		} else {
-			let newPreset = { ...preset, id: Math.random() };
-			setPreset(newPreset);
-			setAllPresets([...allPresets, newPreset]);
-			setSelectedPreset(newPreset);
+			setSelectedPreset(preset);
 			navigate("/");
+		}
+	}
+
+	const onSaveClick = () => {
+		if (preset.bodyPart.part) {
+			let newPreset = { ...preset, id: Math.random() };
+			save([...allPresets, newPreset], newPreset);
+		} else {
+			setShowSelectPart(true);
 		}
 	};
 
-	const update = () => {
-		setAllPresets(
+	const onUpdateClick = () => {
+		save(
 			allPresets.map((ps) => {
 				return ps.id === preset.id ? preset : ps;
-			})
+			}),
+			preset
 		);
 	};
 
@@ -68,6 +90,99 @@ function CreatePresetScreen() {
 
 	return (
 		<MainContainer>
+			{showSelectPart && (
+				<ModalView>
+				<Box style={{ width: "16rem", height: "10rem" }}>
+					<div
+						style={{
+							width: "100%",
+							height: "70%",
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							padding: "2rem",
+							textAlign: "center"
+						}}
+					>
+						No Body Part selected! Please select a Body Part and try again. 
+					</div>
+					<div
+						style={{
+							width: "100%",
+							height: "30%",
+							display: "flex",
+							justifyContent: "space-around",
+							alignItems: "center",
+							marginTop: "-0.5rem",
+						}}
+					>
+						<IconButton
+							style={{...iconBtnStl, width: "60%"}}
+							color={MAIN_BG_COLOR}
+							onClick={() => setShowSelectPart(false)}
+						>
+							OK
+						</IconButton>
+					</div>
+				</Box>
+			</ModalView>
+			)}
+			{showSaved && (
+				<ModalView>
+					<Box style={{ width: "16rem", height: "10rem" }}>
+						<div
+							style={{
+								width: "100%",
+								height: "40%",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							<div
+								style={{
+									width: "4rem",
+									height: "4rem",
+									border: `solid 0.3rem ${COAG_COLOR}`,
+									borderRadius: "50%",
+									marginTop: "0.7rem"
+								}}
+							>
+								<BiCheck size={"100%"} color={COAG_COLOR} />
+							</div>
+						</div>
+						<div
+							style={{
+								width: "100%",
+								height: "30%",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							Preset Saved.
+						</div>
+						<div
+							style={{
+								width: "100%",
+								height: "30%",
+								display: "flex",
+								justifyContent: "space-around",
+								alignItems: "center",
+								marginTop: "-0.5rem",
+							}}
+						>
+							<IconButton
+								style={{...iconBtnStl, width: "50%"}}
+								color={MAIN_BG_COLOR}
+								onClick={navigateOut}
+							>
+								OK
+							</IconButton>
+						</div>
+					</Box>
+				</ModalView>
+			)}
 			{tryDiscard && (
 				<ModalView>
 					<Box style={{ width: "16rem", height: "10rem" }}>
@@ -161,7 +276,10 @@ function CreatePresetScreen() {
 				>
 					<PresetNameView
 						name={preset.name || ""}
-						part={preset.bodyPart.part}
+						bodyPart={preset.bodyPart}
+						setBodyPartName={(name) => {
+							setPreset({ ...preset, bodyPart: {...preset.bodyPart, name}});
+						}}
 						setName={(name) => {
 							setPreset({ ...preset, name });
 						}}
@@ -180,7 +298,7 @@ function CreatePresetScreen() {
 						part={preset.bodyPart.part}
 						group={preset.bodyPart.group}
 						setPart={(part, group) =>
-							setPreset({ ...preset, bodyPart: { part, group } })
+							setPreset({ ...preset, bodyPart: { ...preset.bodyPart, part, group } })
 						}
 					></BodyComponent>
 				</div>
@@ -220,9 +338,9 @@ function CreatePresetScreen() {
 								justifySelf: "center",
 							}}
 							color={COAG_COLOR}
-							onClick={update}
+							onClick={onUpdateClick}
 						>
-							UPDATE
+							SAVE
 						</IconButton>
 					) : (
 						<IconButton
@@ -236,7 +354,7 @@ function CreatePresetScreen() {
 								justifySelf: "center",
 							}}
 							color={COAG_COLOR}
-							onClick={save}
+							onClick={onSaveClick}
 						>
 							SAVE
 						</IconButton>

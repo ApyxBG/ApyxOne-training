@@ -111,7 +111,7 @@ const Box = styled.div`
 	width: 100%;
 	overflow: hidden;
 	color: white;
-	font-family: OpenSans-SemiBold;
+	font-family: OpenSans-Semibold;
 	font-size: 90%;
     
 	:not(:last-child) {

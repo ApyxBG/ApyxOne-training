@@ -14,7 +14,7 @@ export function createDefaultPreset() {
 				units: "w",
 			},
 			coag: {
-				mode: CoagModes.SPAY.id,
+				mode: CoagModes.SPRAY.id,
 				power: 0,
 				units: "w",
 			},
@@ -26,7 +26,7 @@ export function createDefaultPreset() {
 				units: "w",
 			},
 			coag: {
-				mode: CoagModes.SPAY.id,
+				mode: CoagModes.SPRAY.id,
 				power: 0,
 				units: "w",
 			},
@@ -40,7 +40,7 @@ export function createDefaultPreset() {
 		helium: {
 			renuvion: 0,
 			coolCoag: {
-				mode: CoagModes.SPAY.id,
+				mode: CoagModes.SPRAY.id,
 				power: 0,
 				units: "w",
 			},
@@ -57,9 +57,18 @@ export function createDefaultPreset() {
 			},
 		},
 		pulsing: {
+			range: {min: 0, max: 999},
 			enabled: false,
 			onTime: 800,
 			offTime: 800,
 		},
 	};
+}
+
+export function generateDisplayName(preset) {
+	if (typeof preset.bodyPart.name === 'string') {
+		return `${preset.bodyPart.name} - ${preset.name || ''}`;
+	} else {
+		return `${preset.bodyPart.part} - ${preset.name || ''}`;
+	}
 }
