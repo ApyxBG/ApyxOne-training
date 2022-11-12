@@ -36,6 +36,9 @@ import incbuttons from "../public/images/helpview/incbuttons.png";
 import { GiHamburgerMenu } from "@react-icons/all-files/gi/GiHamburgerMenu";
 import getIcon from "../styles/Icons";
 import WTF from "../styles/Icons/WTF";
+import Pads from '../styles/Icons/Pads';
+import WTF1 from '../styles/Icons/WTF1';
+import WTF2 from '../styles/Icons/WTF2';
 
 export const VIEWS = {
 	CREATE_PRESET: "CreatePreset",
@@ -624,7 +627,7 @@ export function getRows(view) {
 					},
 					{
 						img: (
-							<WTF width="1.5rem" height="0.9rem"></WTF>
+							<><WTF1></WTF1><WTF2></WTF2><WTF width="1.5rem" height="0.9rem"></WTF></>
 						),
 						desc: "Grounding Pad Icons - Identifies the Grounding pad plugged in and its type (split or solid).",
 					},
