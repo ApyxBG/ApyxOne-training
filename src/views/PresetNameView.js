@@ -12,7 +12,7 @@ function PresetNameView({ name, setName, bodyPart, setBodyPartName }) {
 			partNameValue = bodyPart.name;
 			showPlaceholder = false;
 		} else {
-			partNameValue = bodyPart.part;
+			partNameValue = bodyPart.part || "";
 		}
 	}
 	return (
