@@ -40,6 +40,9 @@ function useHeliumController(helium, setHelium) {
 		setHelium((prev) => {
 			let helium = prev;
 			let flow = helium.flow * 10;
+			if (flow <= 10) {
+				return setFlowValue(flow - 1, helium);
+			}
 			let rounded = Math.floor(flow / 5);
 			let diff = flow / 5 - rounded;
 			return setFlowValue(diff > 0 ? rounded * 5 : flow - 5, helium);
@@ -50,6 +53,9 @@ function useHeliumController(helium, setHelium) {
 		setHelium((prev) => {
 			let helium = prev;
 			let flow = helium.flow * 10;
+			if (flow < 10) {
+				return setFlowValue(flow + 1, helium)
+			}
 			let rounded = Math.floor(flow / 5);
 			let diff = flow / 5 - rounded;
 			return setFlowValue(diff > 0 ? rounded * 5 + 5 : flow + 5, helium);
@@ -109,6 +115,9 @@ function useHeliumController(helium, setHelium) {
 
 	const setHeliumFlow = (flow) => {
 		setShowFlowModal(false);
+		if (flow === 0) {
+			flow = 0.1;
+		}
 		setHelium({
 			...helium,
 			flow,

@@ -78,6 +78,7 @@ function HeliumView({
 					setValue={setHeliumFlow}
 					isFloat={true}
 					range={{ min: 0, max: 5 }}
+					sliderRange={{ min: 0.1, max: 5 }}
 					title="Helium Gas Flow"
 					subtitle="Gas Flow"
 					units="l/min"

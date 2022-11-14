@@ -34,6 +34,7 @@ function EnergyView({
 					subtitle="Total Energy"
 					units="kJ"
 					titleColor={NRG_TITLE_COLOR}
+					sliderRange={{ min: 0.1, max: 10 }}
 				></PowerSetterComponent>
 			)}
 

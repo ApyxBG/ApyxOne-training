@@ -4,6 +4,9 @@ function useEnergyController(energy, setEnergy) {
 	const [showLimitModal, setShowLimitModal] = useState(false);
 
 	const setLimit = (value) => {
+		if (value === 0) {
+			value = 0.1;
+		}
 		setEnergy({ ...energy, limit: { ...energy.limit, value } });
 		setShowLimitModal(false);
 	};

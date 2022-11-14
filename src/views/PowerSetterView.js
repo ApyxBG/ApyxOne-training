@@ -15,6 +15,7 @@ function PowerSetterView({
 	onSave,
 	color,
 	range,
+	sliderRange,
 	isFloat,
 	isFreshKeyboard,
 	setPowerFromKeyboard,
@@ -23,6 +24,11 @@ function PowerSetterView({
 	subtitleColor,
 	onClose,
 }) {
+	if (!sliderRange) {
+		sliderRange = range;
+	}
+	let sliderValue = power < sliderRange.min ? sliderRange.min : power;
+	sliderValue = isFloat ? 10 * sliderValue : sliderValue;
 	return (
 		<Modal
 			style={{
@@ -82,17 +88,17 @@ function PowerSetterView({
 					/>
 
 					<Slider
-						min={isFloat ? 10 * range.min : range.min}
-						max={isFloat ? 10 * range.max : range.max}
-						val={isFloat ? 10 * power : power}
+						min={isFloat ? 10 * sliderRange.min : sliderRange.min}
+						max={isFloat ? 10 * sliderRange.max : sliderRange.max}
+						val={sliderValue}
 						className="unit-slider mb-2"
 						color={color}
 					>
 						<input
 							type="range"
-							min={isFloat ? 10 * range.min : range.min}
-							max={isFloat ? 10 * range.max : range.max}
-							value={isFloat ? 10 * power : power}
+							min={isFloat ? 10 * sliderRange.min : sliderRange.min}
+							max={isFloat ? 10 * sliderRange.max : sliderRange.max}
+							value={sliderValue}
 							onChange={(event) => {
 								isFloat
 									? setPower(

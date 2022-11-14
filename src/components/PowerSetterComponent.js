@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PowerSetterView from "../views/PowerSetterView";
 
-function PowerSetterComponent({ title, color, value, setValue, range, isFloat, units, subtitle, titleColor, subtitleColor }) {
+function PowerSetterComponent({ title, color, value, setValue, range, isFloat, units, subtitle, titleColor, subtitleColor, sliderRange }) {
     const [power, setPower] = useState(value);
     const [isFreshKeyboard, setIsFreshKeyboard] = useState(true);
     
@@ -39,6 +39,7 @@ function PowerSetterComponent({ title, color, value, setValue, range, isFloat, u
             titleColor={titleColor}
             subtitleColor={subtitleColor}
             onClose={onClose}
+            sliderRange={sliderRange}
 		></PowerSetterView>
     );
 }
