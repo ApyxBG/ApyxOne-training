@@ -731,6 +731,7 @@ function PresetSettingsView({ preset, setPreset }) {
 									color: energyController.limit.enabled
 										? "white"
 										: LABEL_DISABLED,
+									alignItems: "center",
 								}}
 							>
 								<ToggleButton
@@ -758,7 +759,7 @@ function PresetSettingsView({ preset, setPreset }) {
 										justifyContent: "center",
 									}}
 								>
-									<div style={{ display: "inline-block" }}>
+									<div style={{ display: "inline-block", fontSize: "1.6rem" }}>
 										{`${Math.floor(
 											energyController.limit.value
 										)}.${
@@ -767,7 +768,7 @@ function PresetSettingsView({ preset, setPreset }) {
 											10
 										}`}
 									</div>
-									<div style={{ display: "inline-block" }}>
+									<div style={{ display: "inline-block", marginLeft: "0.2rem", fontSize: "0.6rem" }}>
 										kJ
 									</div>
 								</div>
