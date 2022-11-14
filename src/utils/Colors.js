@@ -6,3 +6,5 @@ export const NRG_TITLE_COLOR = "#5A357E";
 export const LABEL_DISABLED = "#405A93";
 export const TEXT_DISABLED_COLOR = "rgb(185,185,185)";
 export const MAIN_BG_COLOR = "rgb(23,34,56)";
+export const BOX_COLOR = "rgb(39, 50, 78)";
+export const METRICS_DISABLED_COLOR = "#505050"

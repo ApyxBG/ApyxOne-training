@@ -8,8 +8,8 @@ import MainContainer from "../components/common/MainContainer";
 import PowerSetterComponent from "../components/PowerSetterComponent";
 import { PatientInfo, ProcedureInfo } from "../store/DataLogging";
 import { Box, Content, Title } from "../styles/Card";
-import { CircleButton, HorizontalLine } from "../styles/Common";
-import { COAG_COLOR, TITLE_COLOR , LABEL_DISABLED} from "../utils/Colors";
+import { CircleButton, HorizontalLine, IconButton } from "../styles/Common";
+import { COAG_COLOR, TITLE_COLOR , METRICS_DISABLED_COLOR, BOX_COLOR} from "../utils/Colors";
 import NavBar from "../views/NavBar";
 import SwitchButton from "../views/SwitchButton";
 
@@ -68,7 +68,7 @@ function DataLoggingScreen() {
 				style={{
 					display: "flex",
 					flexDirection: "row",
-					height: "90%",
+					height: "83%",
 				}}
 			>
 				<div style={{ width: "35%" }}>
@@ -214,7 +214,7 @@ function DataLoggingScreen() {
 											marginRight: "1rem",
 											color: patientInfo.metric
 												? "inherit"
-												: LABEL_DISABLED,
+												: METRICS_DISABLED_COLOR,
 										}}
 									>
 										Metric
@@ -245,7 +245,7 @@ function DataLoggingScreen() {
 										style={{
 											marginLeft: "1rem",
 											color: patientInfo.metric
-												? LABEL_DISABLED
+												? METRICS_DISABLED_COLOR
 												: "inherit",
 										}}
 									>
@@ -379,7 +379,41 @@ function DataLoggingScreen() {
 					</Box>
 				</div>
 			</div>
-			<div style={{ height: "10%" }}></div>
+			<div style={{ height: "12%", display: "flex", justifyContent: "end", alignItems: "center" }}>
+			<IconButton
+					style={{
+						height: "50%",
+						width: "10%",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						alignSelf: "center",
+						justifySelf: "center",
+						marginLeft: "5%",
+					}}
+					color={BOX_COLOR}
+					onClick={() => navigate(-1)}
+				>
+					CANCEL
+				</IconButton>
+				<IconButton
+					style={{
+						height: "50%",
+						width: "10%",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						alignSelf: "center",
+						justifySelf: "center",
+						marginRight: "5%",
+						marginLeft: "5%",
+					}}
+					color={COAG_COLOR}
+					onClick={() => navigate(-1)}
+				>
+					SAVE
+				</IconButton>
+			</div>
 		</MainContainer>
 	);
 }
