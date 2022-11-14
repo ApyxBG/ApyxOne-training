@@ -174,12 +174,14 @@ function PresetsScreen() {
 							bg={COAG_COLOR}
 							style={{ padding: "0.4rem" }}
 							onClick={() => {
-								navigate("/createpreset", {
-									state: {
-										preset: currentPreset,
-										from: "/allpresets"
-									},
-								});
+								if (currentPreset) {
+									navigate("/createpreset", {
+										state: {
+											preset: currentPreset,
+											from: "/allpresets"
+										},
+									});
+								}
 							}}
 						>
 							<img width="100%" alt="" src={PencilIcon}></img>
