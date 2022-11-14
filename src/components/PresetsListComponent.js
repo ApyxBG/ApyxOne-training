@@ -50,8 +50,10 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
   }, [selectedPreset])
 
   useEffect(() => {
-    if (presets && presets.length > 0 && !presets.includes(selectedPreset)) {
-      setSelectedPreset(presets[0]);
+    if (presets && presets.length > 0) {
+      if (!presets.includes(selectedPreset)) {
+       setSelectedPreset(presets[0]);
+      }
     } else {
       setSelectedPreset(null);
     }
