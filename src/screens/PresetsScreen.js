@@ -16,7 +16,7 @@ import TrashCan from "../public/images/trashcan.png";
 import { VIEWS } from "../utils/HelpViewUtils";
 import { COAG_COLOR, MAIN_BG_COLOR } from "../utils/Colors"
 import ModalView from '../views/ModalView';
-import { generateDisplayName } from '../utils/PresetUtils';
+import { createEmptyPreset, generateDisplayName } from '../utils/PresetUtils';
 
 const iconBtnStl = {
 	height: "70%",
@@ -216,11 +216,9 @@ function PresetsScreen() {
 						<VerticalLine style={{ height: "95%" }}></VerticalLine>
 					</div>
 					<div style={{ flexGrow: 1 }}>
-						{currentPreset && (
-							<PresetSettingsView
-								preset={currentPreset}
-							></PresetSettingsView>
-						)}
+						<PresetSettingsView
+							preset={currentPreset || createEmptyPreset()}
+						></PresetSettingsView>
 					</div>
 				</div>
 				<div

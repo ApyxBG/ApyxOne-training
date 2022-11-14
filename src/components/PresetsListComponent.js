@@ -10,6 +10,7 @@ import BackBodyComponent from "./BackBodyComponent";
 import SwitchButton from "../views/SwitchButton";
 import FaceComponent from "./FaceComponent";
 import { TITLE_COLOR, COAG_COLOR } from "../utils/Colors";
+import { Groups } from '../utils/BodyEnums';
 
 function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
   const allPresets = useRecoilValue(AllPresets);
@@ -29,10 +30,33 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
   }, [filter, allPresets]);
 
   useEffect(() => {
+    if (selectedPreset) {
+      switch(selectedPreset.bodyPart.group) {
+        case Groups.BACK:
+          setIsFace(false);
+          setIsFrontBody(false);
+          break;
+        case Groups.FACE:
+          setIsFace(true);
+          break;
+        case Groups.FRONT:
+          setIsFace(false);
+          setIsFrontBody(true);
+          break;  
+        default:
+          break;
+      }
+    }
+  }, [selectedPreset])
+
+  useEffect(() => {
     if (presets && presets.length > 0 && !presets.includes(selectedPreset)) {
       setSelectedPreset(presets[0]);
+    } else {
+      setSelectedPreset(null);
     }
   }, [presets]);
+
   return (
     <div
       style={{
@@ -152,7 +176,7 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
             <div className="p-3 text-center">
               <FaceComponent
                 goBack={() => setIsFace(false)}
-                selectedPart={filter}
+                selectedPart={selectedPreset && selectedPreset.bodyPart.part}
                 setSelectedPart={(part) => setFilter(part)}
               ></FaceComponent>
             </div>
@@ -162,7 +186,7 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
               className="h-100 w-100 d-flex justify-content-center"
             >
               <FrontBodyComponent
-                selectedPart={filter}
+                selectedPart={selectedPreset && selectedPreset.bodyPart.part}
                 setSelectedPart={(part) => setFilter(part)}
                 onHeadClicked={() => setIsFace(true)}
               ></FrontBodyComponent>
@@ -173,7 +197,7 @@ function PresetsListComponent({ selectedPreset, setSelectedPreset }) {
               className="h-100 w-100 d-flex justify-content-center"
             >
               <BackBodyComponent
-                selectedPart={filter}
+                selectedPart={selectedPreset && selectedPreset.bodyPart.part}
                 setSelectedPart={(part) => setFilter(part)}
               ></BackBodyComponent>
             </div>

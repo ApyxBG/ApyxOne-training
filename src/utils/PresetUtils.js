@@ -53,7 +53,7 @@ export function createDefaultPreset() {
 			},
 			limit: {
 				enabled: false,
-				value: 0,
+				value: 0.1,
 			},
 		},
 		pulsing: {
@@ -63,6 +63,15 @@ export function createDefaultPreset() {
 			offTime: 800,
 		},
 	};
+}
+
+export function createEmptyPreset() {
+	let result = createDefaultPreset();
+	result.energy.limit.value = 0;
+	result.helium.flow = 0;
+	result.pulsing.onTime = 0;
+	result.pulsing.offTime = 0;
+	return result;
 }
 
 export function generateDisplayName(preset) {
