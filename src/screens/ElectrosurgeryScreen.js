@@ -5,7 +5,7 @@ import NavBar from "../views/NavBar";
 import { HiOutlineChevronLeft } from "@react-icons/all-files/hi/HiOutlineChevronLeft";
 import { GiHamburgerMenu } from "@react-icons/all-files/gi/GiHamburgerMenu";
 import { BsQuestion } from "@react-icons/all-files/bs/BsQuestion";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
 	AllPresets,
 	Bipolar,
@@ -24,6 +24,7 @@ import { Box } from "../styles/Card";
 import { IconButton } from "../styles/Common";
 import { VIEWS } from "../utils/HelpViewUtils";
 import { generateDisplayName } from '../utils/PresetUtils';
+import { PresetsScreenFormer } from '../store/Navigation';
 
 const iconBtnStl = {
 	height: "70%",
@@ -49,6 +50,7 @@ function ElectrosurgeryScreen() {
 	const [showSave, setShowSave] = useState(false);
 	const [showMonopolar, setShowMonopolar] = useState(true);
 	const [showCoolCoag, setShowCoolCoag] = useState(true);
+	const setPresetsScreenFormer = useSetRecoilState(PresetsScreenFormer);
 
 	useEffect(() => {
 		if (selectedPreset && !selectedPreset.modified) {
@@ -235,6 +237,7 @@ function ElectrosurgeryScreen() {
 				rightButtons={[
 					{
 						onClick: () => {
+							setPresetsScreenFormer("/");
 							navigate("/allpresets");
 						},
 						icon: "star",

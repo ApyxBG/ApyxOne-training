@@ -15,16 +15,19 @@ import service from "../public/images/menu/service.png";
 import wifi from "../public/images/menu/wifi.png";
 import update from "../public/images/menu/update.png";
 import { VIEWS } from "../utils/HelpViewUtils";
+import { useSetRecoilState } from 'recoil';
+import { PresetsScreenFormer } from '../store/Navigation';
 
 function MenuScreen() {
 	const navigate = useNavigate();
+	const setPresetsScreenFormer = useSetRecoilState(PresetsScreenFormer);
 	return (
 		<MainContainer>
 			<NavBar
 				leftButtons={[
 					{
 						onClick: () => {
-							navigate(-1);
+							navigate("/");
 						},
 						icon: (
 							<HiOutlineChevronLeft
@@ -67,7 +70,10 @@ function MenuScreen() {
 				</Box>
 				<Box
 					style={{ cursor: "pointer" }}
-					onClick={() => navigate("/allpresets")}
+					onClick={() => {
+						setPresetsScreenFormer("/menu");
+						navigate("/allpresets");
+					}}
 				>
 					<Content style={{display: "flex", justifyContent: "center", alignItems: "center"}}><img alt="" src={presets} height="50%" width="auto"></img></Content>
 					<Title color={TITLE_COLOR}>Presets</Title>

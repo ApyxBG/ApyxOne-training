@@ -17,6 +17,7 @@ import { VIEWS } from "../utils/HelpViewUtils";
 import { COAG_COLOR, MAIN_BG_COLOR } from "../utils/Colors"
 import ModalView from '../views/ModalView';
 import { createEmptyPreset, generateDisplayName } from '../utils/PresetUtils';
+import { PresetsScreenFormer } from '../store/Navigation';
 
 const iconBtnStl = {
 	height: "70%",
@@ -36,6 +37,7 @@ function PresetsScreen() {
 	const [allPresets, setAllPresets] = useRecoilState(AllPresets);
 	const [selectedPreset, setSelectedPreset] = useRecoilState(SelectedPreset);
 	const [tryDelete, setTryDelete] = useState(false);
+	const [formerPage, setFormerPage] = useRecoilState(PresetsScreenFormer);
 
 	const getInitialPreset = () => {
 		if (allPresets.length > 0) {
@@ -106,7 +108,12 @@ function PresetsScreen() {
 				leftButtons={[
 					{
 						onClick: () => {
-							navigate("/");
+							if (formerPage) {
+								setFormerPage(null);
+								navigate(formerPage);
+							} else {
+								navigate(-1);
+							}
 						},
 						icon: (
 							<HiOutlineChevronLeft
