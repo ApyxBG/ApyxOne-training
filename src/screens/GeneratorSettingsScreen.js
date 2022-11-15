@@ -299,7 +299,7 @@ function GeneratorSettingsScreen() {
 															setModalProps(null);
 														},
 														range: {
-															min: 0.1,
+															min: 0,
 															max: 200,
 														},
 														isFloat: false,
