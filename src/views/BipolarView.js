@@ -29,6 +29,7 @@ function BipolarView({
 					getModeEnum={getMode}
 					obj={bipolar}
 					setObj={setBipolar}
+					modeTitle="Mode"
 				></ModeSetterComponent>
 			)}
 			<Title color={TITLE_COLOR}>Bipolar</Title>
