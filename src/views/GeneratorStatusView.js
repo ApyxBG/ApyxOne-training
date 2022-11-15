@@ -51,7 +51,7 @@ function GeneratorStatusView() {
 						</Content>
 					</Box>
 					<Box>
-						<Title>Last displaed Error/Fault</Title>
+						<Title>Last displayed Error/Fault</Title>
 						<Content>
 							<div
 								style={{
