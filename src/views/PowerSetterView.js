@@ -38,7 +38,8 @@ function PowerSetterView({
 				overflow: "hidden",
 				width: "25rem",
 				marginRight: "auto",
-				marginLeft: "auto"
+				marginLeft: "auto",
+				maxWidth: "unset"
 			}}
 			isOpen={true}
 			toggle={onClose}
