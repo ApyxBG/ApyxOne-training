@@ -22,7 +22,7 @@ function GeneratorStatusView() {
 				<div style={{ width: "37%" }}>
 					<Box>
 						<Title>Serial #</Title>
-						<Content>AO5121003</Content>
+						<Content>A1C5121003</Content>
 					</Box>
 					<Box>
 						<Title>Catalog #</Title>
