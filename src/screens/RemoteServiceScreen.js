@@ -101,7 +101,7 @@ function RemoteServiceScreen() {
 					<div style={rowStl}>
 						<div style={containerStl}>
 							<div style={leftDivStl}>
-								MedShift Module Firmware Vershion
+								MedShift Module Firmware Version
 							</div>
 							<div style={iconStl}>0.0.0</div>
 						</div>
@@ -164,7 +164,7 @@ function RemoteServiceScreen() {
 						</div>
 						<VerticalLine></VerticalLine>
 						<div style={containerStl}>
-							<div style={leftDivStl}>Available Freespace</div>
+							<div style={leftDivStl}>Available Free space</div>
 							<div style={iconStl}>0 %</div>
 						</div>
 					</div>
