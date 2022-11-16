@@ -130,7 +130,7 @@ function DataLoggingScreen() {
 							<div style={ROW_STYLE}>
 								<NumberRow
 									label={`Height [${
-										patientInfo.metric ? "cm" : "ft"
+										patientInfo.metric ? "cm" : "in"
 									}]`}
 									value={patientInfo.height}
 									onClick={() => {
@@ -154,9 +154,9 @@ function DataLoggingScreen() {
 											isFloat: false,
 											units: patientInfo.metric
 												? "cm"
-												: "ft",
+												: "in",
 											subtitle: `Height [${
-												patientInfo.metric ? "cm" : "ft"
+												patientInfo.metric ? "cm" : "in"
 											}]`,
 										});
 									}}
